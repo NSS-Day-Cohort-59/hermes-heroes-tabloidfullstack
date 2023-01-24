@@ -15,7 +15,7 @@ const CategoryList = () => {
   return (
     <div>
       {categories.map(c => 
-        <div>{c.name}</div>
+        <div key={c.id}>{c.name}</div>
       )}
     </div>
   );
