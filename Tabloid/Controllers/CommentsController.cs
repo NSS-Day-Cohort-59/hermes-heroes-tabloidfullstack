@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Tabloid.Repositories;
 using Tabloid.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Tabloid.Controllers
 {
@@ -39,6 +40,13 @@ namespace Tabloid.Controllers
         {
             _commentRepository.AddComment(comment);
             return CreatedAtAction("Get", new { id = comment.Id }, comment);
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteComment(int id)
+        {
+            _commentRepository.DeleteComment(id);
+            return NoContent();
         }
 
     }
