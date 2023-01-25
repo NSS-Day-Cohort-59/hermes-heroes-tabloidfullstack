@@ -4,6 +4,8 @@ import Login from "./Login";
 import Register from "./Register";
 import Hello from "./Hello";
 
+
+
 export default function ApplicationViews({ isLoggedIn }) {
   return (
     <main>
@@ -15,6 +17,7 @@ export default function ApplicationViews({ isLoggedIn }) {
           />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
+          <Route path="post" element={<Register />} />
           <Route path="*" element={<p>Whoops, nothing here...</p>} />
         </Route>
       </Routes>
