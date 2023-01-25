@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { getAllCategories } from "../modules/categoryManager";
+import { useNavigate } from "react-router-dom";
 
 const CategoryList = () => {
   const [categories, setCategories] = useState([]);
+  const navigate = useNavigate()
 
   const getCategories = () => {
     getAllCategories().then(categories => setCategories(categories));
@@ -13,11 +15,14 @@ const CategoryList = () => {
   }, []);
 
   return (
+    <>
     <div>
       {categories.map(c => 
         <div key={c.id}>{c.name}</div>
       )}
     </div>
+
+    </>
   );
 }
 
