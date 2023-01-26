@@ -15,10 +15,17 @@ export default function ApplicationViews({ isLoggedIn }) {
     <main>
       <Routes>
         <Route path="/">
-          {/* <Route index element={<TagList/>}/> */}
           <Route path="tags">
             <Route index element={<TagList/>}/>
-            {/* <Route path="add" element={<TagForm/>} /> */}
+          </Route>
+          <Route path="categories">
+            <Route index element={<CategoryList/>}/>
+          </Route>
+          <Route path="posts">
+            <Route index element={<PostList/>}/>
+          </Route>
+          <Route path="comments">
+            <Route index element={<PostList/> }/>
           </Route>
           <Route
             index
@@ -30,4 +37,6 @@ export default function ApplicationViews({ isLoggedIn }) {
       </Routes>
     </main>
   );
-};
+};  
+          
+          
