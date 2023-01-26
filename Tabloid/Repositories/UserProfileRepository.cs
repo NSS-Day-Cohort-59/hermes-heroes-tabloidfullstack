@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
+using System.Collections.Generic;
 using Tabloid.Models;
 using Tabloid.Utils;
 
@@ -95,5 +97,47 @@ namespace Tabloid.Repositories
             _context.SaveChanges();
         }
         */
+
+        public List<UserProfile> GetAllUserProfiles()
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        SELECT up.Id, up.FirstName, up.LastName, up.DisplayName, up.UserTypeId, ut.Id As TypeId, ut.Name AS TypeName
+                        From UserProfile up JOIN UserType ut
+                        ON up.UserTypeId = ut.Id
+                        ORDER BY up.DisplayName
+            ";
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+
+                        var userProfile = new List<UserProfile>();
+                        while (reader.Read())
+                        {
+                            userProfile.Add(new UserProfile()
+                            {
+                                Id = DbUtils.GetInt(reader, "Id"),
+                                FirstName = DbUtils.GetString(reader, "FirstName"),
+                                LastName = DbUtils.GetString(reader, "LastName"),
+                                DisplayName = DbUtils.GetString(reader, "DisplayName"),
+                                UserTypeId = DbUtils.GetInt(reader, "UserTypeId"),
+                                UserType = new UserType()
+                                {
+                                    Id = DbUtils.GetInt(reader, "TypeId"),
+                                    Name = DbUtils.GetString(reader, "TypeName"),
+                                    
+                                },
+                            });
+                        }
+
+                        return userProfile;
+                    }
+                }
+            }
+        }
     }
 }

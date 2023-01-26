@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Tabloid.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class HelloController : ControllerBase
