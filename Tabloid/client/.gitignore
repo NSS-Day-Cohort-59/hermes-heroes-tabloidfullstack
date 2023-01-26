@@ -17,7 +17,7 @@
 .env.development.local
 .env.test.local
 .env.production.local
-SQL/02_Tabloid_Seed_Data.sql
+*.sql
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
