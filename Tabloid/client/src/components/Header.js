@@ -38,7 +38,7 @@ export default function Header({ isLoggedIn }) {
                     style={{ cursor: "pointer" }} onClick={logout}>Logout</a>
                 </NavItem>
                 <NavItem>
-                  <NavLink tag={RRNavLink} to="/post">Post</NavLink>
+                  <NavLink tag={RRNavLink} to="/post">Posts</NavLink>
                 </NavItem>
               </>
             }

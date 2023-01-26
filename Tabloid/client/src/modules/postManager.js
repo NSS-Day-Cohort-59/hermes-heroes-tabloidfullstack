@@ -21,7 +21,7 @@ export const getAllPosts = () => {
     });
 };
 
-export const addPost = (quote) => {
+export const addPost = (post) => {
     return getToken().then((token) => {
         return fetch(apiUrl, {
             method: "POST",
@@ -29,7 +29,7 @@ export const addPost = (quote) => {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(quote),
+            body: JSON.stringify(post),
         }).then((resp) => {
             if (resp.ok) {
                 return resp.json();
