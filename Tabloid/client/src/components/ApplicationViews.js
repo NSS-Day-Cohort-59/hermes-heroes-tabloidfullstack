@@ -6,6 +6,7 @@ import Hello from "./Hello";
 import PostList from "./PostList";
 
 
+import CategoryList from "./CategoryList";
 import TagList from "./TagList";
 //  import TagForm from "./TagForm";
 
@@ -21,12 +22,9 @@ export default function ApplicationViews({ isLoggedIn }) {
           </Route>
           <Route
             index
-            element={isLoggedIn ? <Hello /> : <Navigate to="/login" />}
-          />
+            element={isLoggedIn ? <Hello /> : <Navigate to="/login" />}/>
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
-          <Route path="post" element={<PostList />} />
-          <Route path="comment" element={<Login />} />
           <Route path="*" element={<p>Whoops, nothing here...</p>} />
         </Route>
       </Routes>
