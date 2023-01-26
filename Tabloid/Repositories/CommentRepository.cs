@@ -2,25 +2,17 @@
 using Microsoft.Data.SqlClient;
 using System.Collections.Generic;
 using System;
+using Microsoft.Extensions.Configuration;
 
 namespace Tabloid.Repositories
 {
-    public class CommentRepository : ICommentRepository
+    public class CommentRepository : BaseRepository, ICommentRepository
     {
-        private readonly IConfiguration _config;
+        public CommentRepository(IConfiguration configuration) : base(configuration) { }
+       
+  
 
-        public CommentRepository(IConfiguration config)
-        {
-            _config = config;
-        }
 
-        public SqlConnection Connection
-        {
-            get
-            {
-                return new SqlConnection(_config.GetConnectionString("DefaultConnection"));
-            }
-        }
 
         public List<Comment> GetAllComments()
         {
@@ -154,4 +146,4 @@ namespace Tabloid.Repositories
 
 
 }
-}
+

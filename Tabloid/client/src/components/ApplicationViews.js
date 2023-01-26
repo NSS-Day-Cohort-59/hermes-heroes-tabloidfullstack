@@ -7,12 +7,26 @@ import PostList from "./PostList";
 
 
 import CategoryList from "./CategoryList";
+import TagList from "./TagList";
+//  import TagForm from "./TagForm";
 
 export default function ApplicationViews({ isLoggedIn }) {
   return (
     <main>
       <Routes>
         <Route path="/">
+          <Route path="tags">
+            <Route index element={<TagList/>}/>
+          </Route>
+          <Route path="categories">
+            <Route index element={<CategoryList/>}/>
+          </Route>
+          <Route path="posts">
+            <Route index element={<PostList/>}/>
+          </Route>
+          <Route path="comments">
+            <Route index element={<PostList/> }/>
+          </Route>
           <Route
             index
             element={isLoggedIn ? <Hello /> : <Navigate to="/login" />}/>
@@ -23,4 +37,6 @@ export default function ApplicationViews({ isLoggedIn }) {
       </Routes>
     </main>
   );
-};
+};  
+          
+          
