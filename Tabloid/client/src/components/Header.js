@@ -26,26 +26,26 @@ export default function Header({ isLoggedIn }) {
             {isLoggedIn &&
               <NavItem>
                 <NavLink tag={RRNavLink} to="/">Home</NavLink>
-                <NavLink tag={RRNavLink} to="categories">Category Management</NavLink>
               </NavItem>
 
             }
           </Nav>
-          <Nav>
-            {isLoggedIn &&
-             <NavItem>
-                <NavLink tag={RRNavLink} to="/tags">Tags</NavLink>
-              </NavItem>
-              }
-          </Nav>
+
           <Nav navbar>
             {isLoggedIn &&
               <>
                 <NavItem>
                   <NavLink tag={RRNavLink} to="/comments">Comments</NavLink>
                 </NavItem>
+                <NavItem>
+                <NavLink tag={RRNavLink} to="/tags">Tags</NavLink>
+              </NavItem>
+                <NavItem>
+                  <NavLink tag={RRNavLink} to="/profiles">User Profiles</NavLink>
+                </NavItem>
+                <NavLink tag={RRNavLink} to="categories">Category Management</NavLink>
                   <NavItem>
-                  <NavLink tag={RRNavLink} to="/post">Posts</NavLink>
+                  <NavLink tag={RRNavLink} to="/posts">Posts</NavLink>
                 </NavItem>
                 <NavItem>
                   <a aria-current="page" className="nav-link"

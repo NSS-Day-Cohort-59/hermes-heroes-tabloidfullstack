@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using Tabloid.Models;
 using Tabloid.Repositories;
@@ -6,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Tabloid.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
@@ -21,6 +23,13 @@ namespace Tabloid.Controllers
         public IActionResult GetUserProfile(string firebaseUserId)
         {
             return Ok(_userProfileRepository.GetByFirebaseUserId(firebaseUserId));
+        }
+
+
+        [HttpGet]
+        public IActionResult Get()
+        {
+            return Ok(_userProfileRepository.GetAllUserProfiles());
         }
 
         [HttpGet("DoesUserExist/{firebaseUserId}")]
