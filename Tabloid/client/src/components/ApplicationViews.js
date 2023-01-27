@@ -28,11 +28,13 @@ export default function ApplicationViews({ isLoggedIn }) {
           <Route path="comments">
             <Route index element={<PostList/> }/>
           </Route>
+          <Route path="profiles">
+            <Route index element={<UserProfileList/> }/>
+          </Route>
           <Route
             index
             element={isLoggedIn ? <Hello /> : <Navigate to="/login" />}/>
           <Route path="login" element={<Login />} />
-          <Route path="profile" element={<UserProfileList/>} />
           <Route path="register" element={<Register />} />
           <Route path="*" element={<p>Whoops, nothing here...</p>} />
         </Route>
