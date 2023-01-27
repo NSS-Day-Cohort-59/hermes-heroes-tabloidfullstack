@@ -9,6 +9,10 @@ namespace Tabloid.Repositories
     public class CommentRepository : BaseRepository, ICommentRepository
     {
         public CommentRepository(IConfiguration configuration) : base(configuration) { }
+       
+  
+
+
 
         public List<Comment> GetAllComments()
         {
